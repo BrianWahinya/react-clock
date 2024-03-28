@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { useTime } from "../../hooks";
-import useDate from "../../hooks/useDate";
+import { useDate } from "../../hooks";
 
 const CustomDate = () => {
   const { day, month, year } = useDate();
@@ -14,4 +13,5 @@ const CustomDate = () => {
 
   return <div className="div-date">{pDate}</div>;
 };
+
 export default CustomDate;
