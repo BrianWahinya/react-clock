@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getDateTime } from "../helpers/util";
 
 const getDate = () => {
   const date = new Date();
@@ -29,11 +30,11 @@ const intialInterval = () => {
 };
 
 const useDate = () => {
-  const [date, setDate] = useState(getDate());
+  const [date, setDate] = useState(getDateTime().date);
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
-      setDate((prev) => getDate());
+      setDate((prev) => getDateTime().date);
     }, intialInterval());
     return () => {
       clearInterval(timeInterval);

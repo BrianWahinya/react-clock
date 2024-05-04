@@ -1,0 +1,18 @@
+.custom-calendar {
+  max-width: 500px;
+}
+.custom-calendar button {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+.custom-calendar button:hover, .custom-calendar button:focus {
+  background-color: rgba(215, 235, 255, 0.768627451);
+}
+.custom-calendar .today {
+  background-color: rgba(47, 118, 189, 0.8352941176);
+  color: #fafafa;
+}
+.custom-calendar .today:hover {
+  background-color: rgba(47, 118, 189, 0.9960784314);
+}

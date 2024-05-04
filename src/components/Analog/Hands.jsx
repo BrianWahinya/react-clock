@@ -1,8 +1,8 @@
-import { useTime } from "../../hooks";
+import { useDateTime } from "../../hooks";
 
 const Hands = () => {
-  const time = useTime();
-  const { hours, minutes, seconds } = time;
+  const { timestamp } = useDateTime();
+  const { hours, minutes, seconds } = timestamp;
   const hourDeg = hours * 30 + minutes * (360 / 720),
     minDeg = minutes * 6 + seconds * (360 / 3600),
     secDeg = seconds * 6;
