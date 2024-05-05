@@ -1,6 +1,9 @@
 .custom-calendar {
   max-width: 500px;
 }
+.custom-calendar abbr {
+  text-decoration: none;
+}
 .custom-calendar button {
   border: none;
   border-radius: 0;

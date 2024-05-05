@@ -49,6 +49,7 @@ export const getDateTime = () => {
     currentDateTime
   );
 
+  // console.log(date);
   const dateTime = new Date(`${date} ${time}`);
   const timestamp = {
     hours: dateTime.getHours(),
@@ -56,5 +57,16 @@ export const getDateTime = () => {
     seconds: dateTime.getSeconds(),
   };
 
-  return { date, time, timestamp };
+  return { date, time, timestamp, dateTime };
+};
+
+export const equalDates = (dateA, dateB) => {
+  const yearA = dateA.getFullYear();
+  const monthA = dateA.getMonth();
+  const dayA = dateA.getDate();
+
+  const yearB = dateB.getFullYear();
+  const monthB = dateB.getMonth();
+  const dayB = dateB.getDate();
+  return yearA === yearB && monthA === monthB && dayA === dayB;
 };

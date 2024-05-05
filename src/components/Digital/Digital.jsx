@@ -1,7 +1,7 @@
-import { useDateTime } from "../../hooks";
+import { useTime } from "../../hooks";
 
 const Digital = () => {
-  const { time } = useDateTime();
+  const { time } = useTime();
 
   return <div className="digital-clock">{time && <h1>{time}</h1>}</div>;
 };

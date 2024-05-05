@@ -1,24 +1,19 @@
 import { Calendar as ReactCalendar } from "react-calendar";
+import { useDate } from "../../hooks";
+import { equalDates } from "../../helpers/util";
+
 import "./css/calendar.css";
 
-const isToday = (date) => {
-  const today = new Date();
-  return (
-    date.getDate() === today.getDate() &&
-    date.getMonth() === today.getMonth() &&
-    date.getFullYear() === today.getFullYear()
-  );
-};
-
-const tileClassName = ({ date }) => {
-  return isToday(date) ? "today tile" : "tile";
-};
-
 const Calendar = () => {
+  const date = useDate();
+
+  const tileClassName = ({ date: dateCompare }) =>
+    equalDates(dateCompare, date) ? "today" : "";
+
   return (
     <ReactCalendar
       className="custom-calendar"
-      value={new Date()}
+      value={date}
       calendarType="gregory"
       showNeighboringMonth={false}
       tileClassName={tileClassName}
