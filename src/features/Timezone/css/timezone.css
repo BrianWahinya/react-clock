@@ -1,0 +1,13 @@
+.div-timezone {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.div-timezone .timezone-clocks {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: space-evenly;
+}

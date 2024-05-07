@@ -1,7 +1,7 @@
 const Ticks = () => {
   const generateTicks = () => {
     const elems = [];
-    for (let i = -1; i < 60; i++) {
+    for (let i = 0; i < 60; i++) {
       elems.push(
         <div
           key={i}

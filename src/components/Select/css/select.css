@@ -1,0 +1,28 @@
+.input-select {
+  min-width: 300px;
+  max-width: 500px;
+  text-align: left;
+  align-items: left;
+  z-index: 1000;
+}
+.input-select .select-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(223, 230, 255, 0.5607843137);
+  padding: 5px;
+  color: #172b4d;
+  font-weight: 700;
+}
+.input-select .select-group .select-group-badge {
+  background-color: #ebecf0;
+  border-radius: 2em;
+  color: #172b4d;
+  display: inline-block;
+  font-size: 12;
+  font-weight: normal;
+  line-height: 1;
+  min-width: 1;
+  padding: 0.1666666667em 0.5em;
+  text-align: center;
+}

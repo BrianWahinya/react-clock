@@ -10,26 +10,14 @@ export const format = (time) => {
   return `${hours}:${minutes}:${seconds}`;
 };
 
-const userLocale = navigator?.language || "en-US";
-
-const options = {
-  weekday: "long",
-  day: "2-digit",
-  month: "long",
-  year: "numeric",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  hour12: true, // Use 12-hour format
-  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-};
+export const userLocale = navigator?.language || "en-US";
+export const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 const dateOptions = {
   weekday: "long",
   day: "2-digit",
   month: "long",
   year: "numeric",
-  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
 const timeOptions = {
@@ -37,14 +25,25 @@ const timeOptions = {
   minute: "2-digit",
   second: "2-digit",
   hour12: true,
-  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
-export const getDateTime = () => {
-  const currentDateTime = new Date();
-  const date = new Intl.DateTimeFormat(userLocale, dateOptions).format(
-    currentDateTime
+export const dateFormat = (dateStr, options = null) => {
+  const dateObj = new Date(dateStr);
+  const defaultOptions = { ...dateOptions, ...timeOptions };
+  return new Intl.DateTimeFormat(userLocale, options || defaultOptions).format(
+    dateObj
   );
+};
+
+export const getDateTime = (timezone, optionsDate) => {
+  dateOptions.timeZone = timezone || userTimezone;
+  timeOptions.timeZone = timezone || userTimezone;
+
+  const currentDateTime = new Date();
+  const date = new Intl.DateTimeFormat(userLocale, {
+    ...dateOptions,
+    ...optionsDate,
+  }).format(currentDateTime);
   const time = new Intl.DateTimeFormat(userLocale, timeOptions).format(
     currentDateTime
   );
@@ -56,7 +55,7 @@ export const getDateTime = () => {
     minutes: dateTime.getMinutes(),
     seconds: dateTime.getSeconds(),
   };
-
+  // console.log(dateTime);
   return { date, time, timestamp, dateTime };
 };
 

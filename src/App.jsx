@@ -1,4 +1,5 @@
-import { Analog, Calendar, Digital, Footer } from "./components";
+import { Layout } from "./layout";
+import { Footer } from "./components";
 import { Cursor } from "react-custom-cursors";
 import "react-custom-cursors/dist/index.css";
 import "./App.css";
@@ -16,9 +17,8 @@ function App() {
         mixBlendMode
         size="sm"
       />
-      <Analog />
-      <Digital />
-      <Calendar />
+      <code>Still in development-stages.. be patient 😉</code>
+      <Layout />
       <Footer />
     </>
   );
