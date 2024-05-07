@@ -1,10 +1,11 @@
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import { CustomAnalog, Select } from "../../components";
 import { timezones } from "../../helpers/timezones";
+import { genRandomId, userTimezone } from "../../helpers/util";
 
 import "./css/timezone.css";
 
-const defaultCities = ["london", "santiago", "bangkok"];
+const defaultCities = ["london", "santiago", "bangkok", "nairobi"];
 const defaultOptions = [];
 const groupedOptions = timezones.map((zone) => {
   const { continent, cities } = zone;
@@ -15,7 +16,11 @@ const groupedOptions = timezones.map((zone) => {
       value: tz,
       label: `${city}: ${tz}`,
     };
-    if (defaultCities.includes(city.replace(/[_\s-]/g, "").toLowerCase())) {
+    const cityName = city.replace(/[_\s-]/g, "").toLowerCase();
+    if (
+      defaultCities.includes(cityName) &&
+      tz.toLowerCase() !== userTimezone.toLowerCase()
+    ) {
       defaultOptions.push(optionObj);
     }
     return optionObj;
@@ -24,30 +29,33 @@ const groupedOptions = timezones.map((zone) => {
   return { label: continent, options };
 });
 
+const store = () => JSON.parse(localStorage.getItem("userTimezones"));
+
+if (!store() || store()?.length < 1) {
+  localStorage.setItem("userTimezones", JSON.stringify(defaultOptions));
+}
+
 const Timezone = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState(store() || []);
   const onChange = (elems) => {
     // console.log(elems);
+    localStorage.setItem("userTimezones", JSON.stringify(elems));
     setSelectedItems(elems);
   };
-
-  useLayoutEffect(() => {
-    onChange(defaultOptions);
-  }, []);
 
   return (
     <div className="div-timezone">
       <Select
         groupedOptions={groupedOptions}
-        defaultOption={defaultOptions}
+        defaultOption={selectedItems}
         onChange={onChange}
       />
       <div className="timezone-clocks">
-        {selectedItems.map((item, idx) => {
+        {selectedItems.map((item) => {
           const { value, city } = item;
           return (
             <CustomAnalog
-              key={idx}
+              key={genRandomId()}
               cls="sub-analog"
               timezone={value}
               city={city}

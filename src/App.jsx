@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <Cursor
+      {/* <Cursor
         animation="beat"
         color="#898989"
         dotColor="#272727"
@@ -16,7 +16,7 @@ function App() {
         isHollow
         mixBlendMode
         size="sm"
-      />
+      /> */}
       <code>Still in development-stages.. be patient 😉</code>
       <Layout />
       <Footer />

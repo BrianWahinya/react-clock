@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDateTime, userTimezone } from "../helpers/util";
+import { getDateTime } from "../helpers/util";
 
 const useTime = () => {
   const { time, timestamp } = getDateTime();
