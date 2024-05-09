@@ -20,11 +20,11 @@ const customStyles = {
   //     ...provided,
   //   };
   // },
-  valueContainer: (provided) => ({
-    ...provided,
-    maxHeight: "40px",
-    overflow: "auto",
-  }),
+  // valueContainer: (provided) => ({
+  //   ...provided,
+  //   maxHeight: "40px",
+  //   overflow: "auto",
+  // }),
 };
 
 const animatedComponents = makeAnimated();

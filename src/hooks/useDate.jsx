@@ -8,7 +8,6 @@ const useDate = () => {
   useEffect(() => {
     const timeInterval = setInterval(() => {
       const newDate = new Date(currentDate);
-
       // console.log(newDate, date, currentDate);
       if (!equalDates(date, newDate)) {
         setDate((prev) => newDate);

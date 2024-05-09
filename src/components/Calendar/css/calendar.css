@@ -1,21 +1,43 @@
 .custom-calendar {
   max-width: 500px;
 }
-.custom-calendar abbr {
+.custom-calendar abbr,
+.custom-calendar abbr[title] {
   text-decoration: none;
+  cursor: default;
+}
+.custom-calendar abbr:hover,
+.custom-calendar abbr[title]:hover {
+  cursor: pointer;
 }
 .custom-calendar button {
   border: none;
+  border-top: 2px solid transparent;
   border-radius: 0;
   background-color: transparent;
+  transition: all 300ms;
 }
 .custom-calendar button:hover, .custom-calendar button:focus {
+  transition: all 300ms;
+  border-top: 2px solid rgba(0, 0, 126, 0.737254902);
+  cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.custom-calendar button:focus {
+  background-color: rgba(237, 246, 255, 0.7137254902);
+}
+.custom-calendar button:hover {
   background-color: rgba(215, 235, 255, 0.768627451);
 }
 .custom-calendar .today {
-  background-color: rgba(47, 118, 189, 0.8352941176);
-  color: #fafafa;
+  background-color: rgba(0, 128, 255, 0.5725490196);
+  color: #ffffff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.custom-calendar .today:hover {
+.custom-calendar .today:hover, .custom-calendar .today:focus {
   background-color: rgba(47, 118, 189, 0.9960784314);
+}
+.custom-calendar .custom-date {
+  transition: all 500ms;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }

@@ -1,0 +1,45 @@
+.btn-modal {
+  background-color: transparent;
+  border: none;
+  transition: all 1.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 1px 3px;
+}
+.btn-modal svg {
+  width: 25px;
+  height: 25px;
+  transition: all 0.25s;
+}
+.btn-modal.btn-about svg path {
+  fill: #212529 !important;
+}
+.btn-modal span {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+  font-size: smaller;
+}
+.btn-modal:hover {
+  cursor: pointer;
+  transition: all 1.5s;
+}
+.btn-modal:hover svg {
+  opacity: 0.3;
+}
+.btn-modal:hover span {
+  transition: all 0.5s;
+  transform: translate(0, -30px);
+  visibility: visible;
+  opacity: 1;
+  text-decoration: overline;
+  font-size: small;
+  font-weight: 500;
+  color: rgba(33, 37, 41, 0.8352941176);
+}

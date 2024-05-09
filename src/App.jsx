@@ -3,6 +3,7 @@ import { Footer } from "./components";
 import { Cursor } from "react-custom-cursors";
 import "react-custom-cursors/dist/index.css";
 import "./App.css";
+import { MainProvider } from "./context/MainContext";
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
         size="sm"
       /> */}
       <code>Still in development-stages.. be patient 😉</code>
-      <Layout />
-      <Footer />
+      <MainProvider>
+        <Layout />
+        <Footer />
+      </MainProvider>
     </>
   );
 }

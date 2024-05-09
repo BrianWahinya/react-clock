@@ -1,5 +1,8 @@
 export const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
 
+/**********************************/
+/************* RANDOM *************/
+/**********************************/
 const genRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -23,6 +26,33 @@ export const genRandomId = () => {
   return `${timestamp}_${randomStr}_${randomInt}`;
 };
 
+/**********************************/
+/************* COLORS *************/
+/**********************************/
+const opacityHslRgb = (item) => {
+  const sub_item = item.split(", ").slice(0, -1);
+  return `${sub_item.join(", ")}, 0.4)`
+    .replace("rgba", "rgb")
+    .replace("hsla", "hsl")
+    .replace("rgb", "rgba")
+    .replace("hsl", "hsla");
+};
+
+export const insertBgOpacity = (color) => {
+  const id = color[0].toLowerCase();
+  switch (id) {
+    case "#":
+      return `${color.slice(0, 7)}66`;
+    case "r" || "h":
+      return opacityHslRgb(color);
+    default:
+      return color;
+  }
+};
+
+/**********************************/
+/************** TIME **************/
+/**********************************/
 export const format = (time) => {
   let { hours, minutes, seconds } = time;
 

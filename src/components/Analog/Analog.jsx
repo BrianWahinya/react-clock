@@ -17,13 +17,13 @@ const Analog = () => {
         </div>
         <div className="analog-info location">{userTimezone}</div>
       </div>
-      <div className="dot"></div>
+      <div className="analog-dot"></div>
       {<Hands />}
       <div>
-        <span className="h3">3</span>
-        <span className="h6">6</span>
-        <span className="h9">9</span>
-        <span className="h12">12</span>
+        <span className="analog-h3">3</span>
+        <span className="analog-h6">6</span>
+        <span className="analog-h9">9</span>
+        <span className="analog-h12">12</span>
       </div>
       <Ticks />
     </div>

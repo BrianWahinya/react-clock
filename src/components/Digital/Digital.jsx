@@ -1,4 +1,5 @@
 import { useTime } from "../../hooks";
+import "./css/digital.css";
 
 const Digital = () => {
   const { time } = useTime();
