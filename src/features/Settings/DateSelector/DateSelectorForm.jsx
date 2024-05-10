@@ -37,7 +37,7 @@ const DateSelectorForm = ({ addCalendarDate }) => {
       desc: dateDescRef.current.value.trim(),
       showCountdown: dateShowCountdownRef.current.checked,
     };
-    // console.log("formData", formData);
+    console.log("formData", formData);
     addCalendarDate(formData);
     formDateRef.current.value = "";
     dateDescRef.current.value = "";

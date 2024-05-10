@@ -1,6 +1,7 @@
 import { useMainContext } from "../../../context/MainContext";
 import SelectedDates from "./SelectedDates";
 import DateSelectorForm from "./DateSelectorForm";
+import "./css/dateselector.css";
 
 const DateSelector = () => {
   const { selectedDates, addCalendarDate } = useMainContext();

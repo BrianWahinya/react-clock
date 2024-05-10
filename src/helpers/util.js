@@ -29,22 +29,28 @@ export const genRandomId = () => {
 /**********************************/
 /************* COLORS *************/
 /**********************************/
-const opacityHslRgb = (item) => {
+const opacityLevels = {
+  low: [0.8, "cc"],
+  mid: [0.4, 66],
+  high: [0.26, 44],
+};
+const opacityHslRgb = (item, op) => {
   const sub_item = item.split(", ").slice(0, -1);
-  return `${sub_item.join(", ")}, 0.4)`
+  return `${sub_item.join(", ")}, ${op})`
     .replace("rgba", "rgb")
     .replace("hsla", "hsl")
     .replace("rgb", "rgba")
     .replace("hsl", "hsla");
 };
 
-export const insertBgOpacity = (color) => {
+export const insertBgOpacity = (color, level) => {
+  const [rg, hex] = opacityLevels?.[level] || opacityLevels.mid;
   const id = color[0].toLowerCase();
   switch (id) {
     case "#":
-      return `${color.slice(0, 7)}66`;
+      return `${color.slice(0, 7)}${hex}`;
     case "r" || "h":
-      return opacityHslRgb(color);
+      return opacityHslRgb(color, rg);
     default:
       return color;
   }
@@ -122,3 +128,6 @@ export const equalDates = (dateA, dateB) => {
   const dayB = dateB.getDate();
   return yearA === yearB && monthA === monthB && dayA === dayB;
 };
+
+export const sortDates = (arr) =>
+  arr.sort((a, b) => new Date(a.date) - new Date(b.date));

@@ -1,0 +1,34 @@
+.list-selected-dates {
+  max-height: 260px;
+  overflow: auto;
+}
+.list-selected-dates::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+.list-selected-dates::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: #f7f7f7;
+}
+.list-selected-dates::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.24, rgb(119, 119, 119)), color-stop(0.72, rgb(158, 158, 158)), color-stop(0.86, rgb(125, 125, 125)));
+}
+.list-selected-dates .btn-delete {
+  background: none;
+  border: none;
+  font-size: large;
+  color: rgba(188, 31, 31, 0.783);
+  padding: 2px 8px;
+  height: -moz-fit-content;
+  height: fit-content;
+  box-sizing: content-box;
+  transition: all 500ms;
+}
+.list-selected-dates .btn-delete:hover {
+  background-color: rgba(216, 43, 43, 0.755);
+  color: rgba(255, 255, 255, 0.918);
+  transition: all 300ms;
+}
