@@ -3,7 +3,6 @@ export { default as Digital } from "./Digital/Digital.jsx";
 export { default as CustomDate } from "./CustomDate/CustomDate.jsx";
 export { default as CustomAnalog } from "./CustomAnalog/CustomAnalog.jsx";
 export { default as Calendar } from "./Calendar/Calendar.jsx";
-export { default as Select } from "./Select/Select.jsx";
 export { default as Modal } from "./Modal/Modal.jsx";
 export { default as Icon } from "./Icon/Icon.jsx";
 export { default as NavTabs } from "./NavTabs/NavTabs.jsx";
