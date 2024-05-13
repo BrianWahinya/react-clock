@@ -1,0 +1,92 @@
+.accordion-body {
+  max-height: 300px;
+  overflow: auto;
+}
+.accordion-body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+.accordion-body::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: #f7f7f7;
+}
+.accordion-body::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.24, rgb(119, 119, 119)), color-stop(0.72, rgb(158, 158, 158)), color-stop(0.86, rgb(125, 125, 125)));
+}
+
+.timezone-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+.timezone-option:hover {
+  cursor: pointer;
+  background-color: aliceblue;
+}
+.timezone-option.active {
+  cursor: not-allowed;
+  background-color: #bebebe;
+}
+
+.selector-selected-timezones {
+  overflow: auto;
+  max-height: 180px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.selector-selected-timezones::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+.selector-selected-timezones::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: #f7f7f7;
+}
+.selector-selected-timezones::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.24, rgb(119, 119, 119)), color-stop(0.72, rgb(158, 158, 158)), color-stop(0.86, rgb(125, 125, 125)));
+}
+.selector-selected-timezones p {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 4px 2px 10px;
+  margin: 2px;
+  font-size: 0.9em !important;
+  background-color: aliceblue;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid transparent;
+  border-radius: 2px;
+}
+.selector-selected-timezones p:hover {
+  cursor: default;
+  border-top: 1px solid rgba(0, 0, 186, 0.927);
+}
+.selector-selected-timezones p button {
+  background: none;
+  font-weight: bold;
+  font-size: 0.8em;
+  border: none;
+  transition: all 300ms;
+  text-align: center;
+  vertical-align: middle;
+}
+.selector-selected-timezones p button:hover {
+  border: none;
+  color: red;
+  transition: all 300ms;
+}

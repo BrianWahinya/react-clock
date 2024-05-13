@@ -2,6 +2,34 @@ import { default as ReactSelect } from "react-select";
 import makeAnimated from "react-select/animated";
 import "./css/select.css";
 
+import {
+  AccordionItem,
+  AccordionBody,
+  AccordionHeader,
+  UncontrolledAccordion,
+} from "reactstrap";
+
+const AccordionComponent = ({ options, onChange }) => {
+  return (
+    <UncontrolledAccordion defaultOpen={options[0].label}>
+      {options.map((group) => (
+        <AccordionItem key={group.label}>
+          <AccordionHeader targetId={group.label}>
+            {group.label}
+          </AccordionHeader>
+          <AccordionBody accordionId={group.label}>
+            {group.options.map((option) => (
+              <div key={option.value} onClick={() => onChange(option)}>
+                {option.label}
+              </div>
+            ))}
+          </AccordionBody>
+        </AccordionItem>
+      ))}
+    </UncontrolledAccordion>
+  );
+};
+
 const formatGroupLabel = (data) => (
   <div className="select-group">
     <span>{data.label}</span>
@@ -34,7 +62,8 @@ const Select = ({ groupedOptions, defaultOption, onChange }) => {
     <ReactSelect
       className="input-select"
       closeMenuOnSelect={false}
-      components={animatedComponents}
+      components={{ Menu: (props) => <AccordionComponent {...props} /> }}
+      // components={animatedComponents}
       defaultValue={[...defaultOption]}
       isMulti
       options={groupedOptions}

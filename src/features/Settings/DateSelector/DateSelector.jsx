@@ -7,7 +7,6 @@ const DateSelector = () => {
   const { selectedDates, addCalendarDate } = useMainContext();
   return (
     <div>
-      <hr />
       Mark important dates
       <SelectedDates selectedDates={selectedDates} />
       <DateSelectorForm addCalendarDate={addCalendarDate} />

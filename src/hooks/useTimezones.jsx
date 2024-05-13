@@ -1,17 +1,18 @@
 import { configs } from "../helpers/configs";
 import { timezones } from "../helpers/timezones";
-import { userTimezone } from "../helpers/util";
+import { sortArrObj, userTimezone } from "../helpers/util";
 
 export const useTimezones = () => {
   const defaultOptions = [];
-  const groupedOptions = timezones.map((zone) => {
-    const { continent, cities } = zone;
-    const options = cities.map((item) => {
-      const { city, tz } = item;
+  const groupedOptions = sortArrObj(timezones, "continent").map((zone) => {
+    const { id, continent, cities } = zone;
+    const options = sortArrObj(cities, "city").map((item) => {
+      const { id, city, tz } = item;
       const optionObj = {
         city,
         value: tz,
         label: `${city}: ${tz}`,
+        id: `${city}_${tz}_${id}`,
       };
       const cityName = city.replace(/[_\s-]/g, "").toLowerCase();
       if (
@@ -23,7 +24,7 @@ export const useTimezones = () => {
       return optionObj;
     });
 
-    return { label: continent, options };
+    return { id: `${continent}_${id}`, label: continent, options };
   });
 
   const store = () => JSON.parse(localStorage.getItem("userTimezones"));

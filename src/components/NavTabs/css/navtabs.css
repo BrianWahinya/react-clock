@@ -1,0 +1,7 @@
+.nav-tabs .nav-item {
+  cursor: pointer;
+}
+
+.tab-content {
+  margin: 10px auto 20px auto;
+}

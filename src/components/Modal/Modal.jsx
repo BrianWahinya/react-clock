@@ -9,7 +9,7 @@ import {
 import BtnModal from "../BtnModal/BtnModal";
 
 const Modal = ({ title, body, footer, btn, args }) => {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
 
   const toggle = () => setModal(!modal);
 

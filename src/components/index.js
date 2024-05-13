@@ -6,4 +6,5 @@ export { default as Calendar } from "./Calendar/Calendar.jsx";
 export { default as Select } from "./Select/Select.jsx";
 export { default as Modal } from "./Modal/Modal.jsx";
 export { default as Icon } from "./Icon/Icon.jsx";
+export { default as NavTabs } from "./NavTabs/NavTabs.jsx";
 export { default as Footer } from "./Footer/Footer.jsx";

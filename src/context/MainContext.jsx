@@ -18,6 +18,27 @@ const store = {
 const reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
+    case "addTimezone":
+      if (
+        state.selectedTimezones.some((elem) => elem.value === payload.value)
+      ) {
+        return state;
+      }
+      const allTimezones = [...state.selectedTimezones, payload];
+      localStorage.setItem("userTimezones", JSON.stringify(allTimezones));
+      return {
+        ...deepCopy(state),
+        selectedTimezones: allTimezones,
+      };
+    case "removeTimezone":
+      const filteredZones = state.selectedTimezones.filter(
+        (item) => item.value !== payload
+      );
+      localStorage.setItem("userTimezones", JSON.stringify(filteredZones));
+      return {
+        ...deepCopy(state),
+        selectedTimezones: filteredZones,
+      };
     case "alterTimezones":
       localStorage.setItem("userTimezones", JSON.stringify(payload));
       return { ...deepCopy(state), selectedTimezones: payload };
@@ -56,6 +77,14 @@ const MainProvider = ({ children }) => {
     dispatch({ type: "alterTimezones", payload: zones });
   };
 
+  const addTimezone = (timezone) => {
+    dispatch({ type: "addTimezone", payload: timezone });
+  };
+
+  const removeTimezone = (id) => {
+    dispatch({ type: "removeTimezone", payload: id });
+  };
+
   const addCalendarDate = (date) => {
     dispatch({ type: "addCalendarDate", payload: date });
   };
@@ -70,7 +99,14 @@ const MainProvider = ({ children }) => {
 
   return (
     <MainContext.Provider
-      value={{ ...state, alterTimezones, addCalendarDate, removeCalendarDate }}
+      value={{
+        ...state,
+        alterTimezones,
+        addTimezone,
+        removeTimezone,
+        addCalendarDate,
+        removeCalendarDate,
+      }}
     >
       {children}
     </MainContext.Provider>

@@ -1,5 +1,21 @@
 export const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
 
+export const sortArrObj = (arr, key) => {
+  const sortedArr = arr.toSorted((a, b) => {
+    let elemA = a[key].toUpperCase(); // Convert names to uppercase for case-insensitive comparison
+    let elemB = b[key].toUpperCase();
+
+    if (elemA < elemB) {
+      return -1;
+    }
+    if (elemA > elemB) {
+      return 1;
+    }
+    return 0; // Names are equal
+  });
+  return sortedArr;
+};
+
 /**********************************/
 /************* RANDOM *************/
 /**********************************/

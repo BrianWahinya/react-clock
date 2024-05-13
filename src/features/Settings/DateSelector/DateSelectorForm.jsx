@@ -1,11 +1,13 @@
 import { useRef, useState } from "react";
 import {
   Button,
+  Col,
   Form,
   FormFeedback,
   FormGroup,
   Input,
   Label,
+  Row,
 } from "reactstrap";
 import { genRandomId } from "../../../helpers/util";
 
@@ -37,7 +39,7 @@ const DateSelectorForm = ({ addCalendarDate }) => {
       desc: dateDescRef.current.value.trim(),
       showCountdown: dateShowCountdownRef.current.checked,
     };
-    console.log("formData", formData);
+    // console.log("formData", formData);
     addCalendarDate(formData);
     formDateRef.current.value = "";
     dateDescRef.current.value = "";
@@ -45,42 +47,50 @@ const DateSelectorForm = ({ addCalendarDate }) => {
   };
 
   return (
-    <Form onSubmit={submit} onChange={onChange}>
-      <FormGroup>
-        <Label for="formDate">Date</Label>
-        <Input
-          id="formDate"
-          name="formDate"
-          placeholder="date placeholder"
-          type="date"
-          innerRef={formDateRef}
-          invalid={error}
-        />
-        {error && <FormFeedback invalid>Select a date</FormFeedback>}
-      </FormGroup>
-      <FormGroup>
-        <Label for="dateColor">Color</Label>
-        <Input
-          id="dateColor"
-          name="dateColor"
-          placeholder="color placeholder"
-          type="color"
-          innerRef={dateColorRef}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="dateType">Type</Label>
-        <Input
-          id="dateType"
-          name="dateType"
-          type="select"
-          innerRef={dateTypeRef}
-        >
-          <option value="dob">Birthday</option>
-          <option value="important">Important</option>
-          <option value="other">Other</option>
-        </Input>
-      </FormGroup>
+    <Form className="form-calendar" onSubmit={submit} onChange={onChange}>
+      <Row>
+        <Col md={5}>
+          <FormGroup>
+            <Label for="formDate">Date</Label>
+            <Input
+              id="formDate"
+              name="formDate"
+              placeholder="date placeholder"
+              type="date"
+              innerRef={formDateRef}
+              invalid={error}
+            />
+            {error && <FormFeedback invalid>Select a date</FormFeedback>}
+          </FormGroup>
+        </Col>
+        <Col md={4}>
+          <FormGroup>
+            <Label for="dateType">Type</Label>
+            <Input
+              id="dateType"
+              name="dateType"
+              type="select"
+              innerRef={dateTypeRef}
+            >
+              <option value="dob">Birthday</option>
+              <option value="important">Important</option>
+              <option value="other">Other</option>
+            </Input>
+          </FormGroup>
+        </Col>
+        <Col md={3}>
+          <FormGroup className="input-color">
+            <Label for="dateColor">Color</Label>
+            <Input
+              id="dateColor"
+              name="dateColor"
+              placeholder="color placeholder"
+              type="color"
+              innerRef={dateColorRef}
+            />
+          </FormGroup>
+        </Col>
+      </Row>
       <FormGroup>
         <Label for="dateDesc">Description</Label>
         <Input
@@ -102,6 +112,7 @@ const DateSelectorForm = ({ addCalendarDate }) => {
           Show countdown?
         </Label>
       </FormGroup>
+
       <Button>Submit</Button>
     </Form>
   );
