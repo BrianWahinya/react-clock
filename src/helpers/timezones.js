@@ -381,22 +381,16 @@ export const timezones = [
       { id: 1, city: "Azores", tz: "Atlantic/Azores" },
       { id: 2, city: "Bermuda", tz: "Atlantic/Bermuda" },
       { id: 3, city: "Madeira", tz: "Atlantic/Madeira" },
+      { id: 4, city: "Cape_Verde", tz: "Atlantic/Cape_Verde" },
+      { id: 5, city: "Canary", tz: "Atlantic/Canary" },
+      { id: 6, city: "Stanley", tz: "Atlantic/Stanley" },
+      { id: 7, city: "Faroe", tz: "Atlantic/Faroe" },
+      { id: 8, city: "South_Georgia", tz: "Atlantic/South_Georgia" },
+      { id: 9, city: "Reykjavik", tz: "Atlantic/Reykjavik" },
     ],
   },
   {
     id: 9,
-    continent: "Atlantic",
-    cities: [
-      { id: 1, city: "Cape_Verde", tz: "Atlantic/Cape_Verde" },
-      { id: 2, city: "Canary", tz: "Atlantic/Canary" },
-      { id: 3, city: "Stanley", tz: "Atlantic/Stanley" },
-      { id: 4, city: "Faroe", tz: "Atlantic/Faroe" },
-      { id: 5, city: "South_Georgia", tz: "Atlantic/South_Georgia" },
-      { id: 6, city: "Reykjavik", tz: "Atlantic/Reykjavik" },
-    ],
-  },
-  {
-    id: 10,
     continent: "Indian",
     cities: [
       { id: 1, city: "Cocos", tz: "Indian/Cocos" },

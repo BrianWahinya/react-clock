@@ -7,7 +7,6 @@ const TimezoneSelector = () => {
   return (
     <div className="timezone-selector">
       <SelectedTimezone />
-      <p className="pLabel">Select Timezone: </p>
       <TimezoneSelectorAccordion />
     </div>
   );
