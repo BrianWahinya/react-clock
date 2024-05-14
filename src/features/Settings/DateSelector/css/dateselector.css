@@ -1,3 +1,8 @@
+.date-selector .p-text {
+  margin: 10px;
+  text-align: center;
+}
+
 .list-selected-dates {
   max-height: 260px;
   overflow: auto;

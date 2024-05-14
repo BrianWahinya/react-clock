@@ -6,8 +6,10 @@ import "./css/dateselector.css";
 const DateSelector = () => {
   const { selectedDates, addCalendarDate } = useMainContext();
   return (
-    <div>
-      Mark important dates
+    <div className="date-selector">
+      {(!selectedDates || selectedDates?.length < 1) && (
+        <p className="p-text">No dates selected</p>
+      )}
       <SelectedDates selectedDates={selectedDates} />
       <DateSelectorForm addCalendarDate={addCalendarDate} />
     </div>
