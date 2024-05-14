@@ -8,8 +8,10 @@ const Layout = () => {
   return (
     <div className="div-layout">
       <Settings />
-      <Time />
-      <Date />
+      <div className="div-sublayout">
+        <Time />
+        <Date />
+      </div>
     </div>
   );
 };
