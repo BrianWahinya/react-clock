@@ -7,6 +7,7 @@ import {
 } from "react";
 import { deepCopy } from "../helpers/util";
 import { useTimezones } from "../hooks/useTimezones";
+import { useCalendarDates } from "../hooks/useCalendarDates";
 
 const MainContext = createContext();
 
@@ -42,13 +43,9 @@ const reducer = (state, action) => {
     case "alterTimezones":
       localStorage.setItem("userTimezones", JSON.stringify(payload));
       return { ...deepCopy(state), selectedTimezones: payload };
-    case "editCalendarDate":
-      const copiedState = deepCopy(state);
-      const indexItem = copiedState.selectedDates.findIndex(
-        (item) => item.id === payload.id
-      );
-      copiedState.selectedDates[indexItem] = payload;
-      return copiedState;
+    case "alterCalendarStore":
+      localStorage.setItem("userCalendarDates", JSON.stringify(payload));
+      return { ...deepCopy(state), selectedDates: payload };
     case "addCalendarDate":
       const allDates = [...state.selectedDates, payload];
       localStorage.setItem("userCalendarDates", JSON.stringify(allDates));
@@ -56,6 +53,14 @@ const reducer = (state, action) => {
         ...deepCopy(state),
         selectedDates: allDates,
       };
+    case "editCalendarDate":
+      const copiedState = deepCopy(state);
+      const indexItem = copiedState.selectedDates.findIndex(
+        (item) => item.id === payload.id
+      );
+      copiedState.selectedDates[indexItem] = payload;
+      return copiedState;
+
     case "removeCalendarDate":
       const filteredDates = state.selectedDates.filter(
         (item) => item.id !== payload
@@ -73,8 +78,13 @@ const reducer = (state, action) => {
 const MainProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, store);
   const { localStore } = useTimezones();
+  const { dateStore } = useCalendarDates();
   const alterTimezones = (zones) => {
     dispatch({ type: "alterTimezones", payload: zones });
+  };
+
+  const alterCalendarStore = (store) => {
+    dispatch({ type: "alterCalendarStore", payload: store });
   };
 
   const addTimezone = (timezone) => {
@@ -95,6 +105,7 @@ const MainProvider = ({ children }) => {
 
   useLayoutEffect(() => {
     alterTimezones(localStore);
+    alterCalendarStore(dateStore);
   }, []);
 
   return (

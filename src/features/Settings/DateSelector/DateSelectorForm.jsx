@@ -16,7 +16,8 @@ const DateSelectorForm = ({ addCalendarDate }) => {
   const formDateRef = useRef(null);
   const dateColorRef = useRef(null);
   const dateTypeRef = useRef(null);
-  const dateDescRef = useRef(null);
+  const dateRepeatRef = useRef(null);
+  const dateNameRef = useRef(null);
   const dateShowCountdownRef = useRef(null);
 
   const onChange = (e) => {
@@ -36,20 +37,45 @@ const DateSelectorForm = ({ addCalendarDate }) => {
       date: formDate,
       color: dateColorRef.current.value.trim(),
       type: dateTypeRef.current.value.trim(),
-      desc: dateDescRef.current.value.trim(),
+      repeat: dateRepeatRef.current.value.trim(),
+      name: dateNameRef.current.value.trim(),
       showCountdown: dateShowCountdownRef.current.checked,
     };
     // console.log("formData", formData);
     addCalendarDate(formData);
     formDateRef.current.value = "";
-    dateDescRef.current.value = "";
+    dateNameRef.current.value = "";
+    dateShowCountdownRef.current.checked = false;
+  };
+
+  const reset = (e) => {
+    e.preventDefault();
+    formDateRef.current.value = "";
+    dateNameRef.current.value = "";
     dateShowCountdownRef.current.checked = false;
   };
 
   return (
-    <Form className="form-calendar" onSubmit={submit} onChange={onChange}>
+    <Form
+      className="form-calendar"
+      onSubmit={submit}
+      onReset={reset}
+      onChange={onChange}
+    >
       <Row>
-        <Col md={5}>
+        <Col md={6}>
+          <FormGroup>
+            <Label for="dateName">Name</Label>
+            <Input
+              id="dateName"
+              name="dateName"
+              placeholder=""
+              type="text"
+              innerRef={dateNameRef}
+            />
+          </FormGroup>
+        </Col>
+        <Col md={6}>
           <FormGroup>
             <Label for="formDate">Date</Label>
             <Input
@@ -63,6 +89,8 @@ const DateSelectorForm = ({ addCalendarDate }) => {
             {error && <FormFeedback invalid>Select a date</FormFeedback>}
           </FormGroup>
         </Col>
+      </Row>
+      <Row>
         <Col md={4}>
           <FormGroup>
             <Label for="dateType">Type</Label>
@@ -72,13 +100,27 @@ const DateSelectorForm = ({ addCalendarDate }) => {
               type="select"
               innerRef={dateTypeRef}
             >
-              <option value="dob">Birthday</option>
               <option value="important">Important</option>
+              <option value="dob">Birthday</option>
               <option value="other">Other</option>
             </Input>
           </FormGroup>
         </Col>
-        <Col md={3}>
+        <Col md={4}>
+          <FormGroup>
+            <Label for="dateRepeat">Repeat</Label>
+            <Input
+              id="dateRepeat"
+              name="dateRepeat"
+              type="select"
+              innerRef={dateRepeatRef}
+            >
+              <option value="yearly">Yearly</option>
+              <option value="monthly">Monthly</option>
+            </Input>
+          </FormGroup>
+        </Col>
+        <Col md={4}>
           <FormGroup className="input-color">
             <Label for="dateColor">Color</Label>
             <Input
@@ -91,16 +133,7 @@ const DateSelectorForm = ({ addCalendarDate }) => {
           </FormGroup>
         </Col>
       </Row>
-      <FormGroup>
-        <Label for="dateDesc">Description</Label>
-        <Input
-          id="dateDesc"
-          name="dateDesc"
-          placeholder=""
-          type="text"
-          innerRef={dateDescRef}
-        />
-      </FormGroup>
+
       <FormGroup check>
         <Input
           id="dateShowCountdown"
@@ -112,8 +145,20 @@ const DateSelectorForm = ({ addCalendarDate }) => {
           Show countdown?
         </Label>
       </FormGroup>
-
-      <Button>Submit</Button>
+      <FormGroup className="form-btns">
+        <Button className="btn-submit" size="sm" color="primary" outline>
+          Save
+        </Button>
+        <Button
+          type="reset"
+          className="btn-reset"
+          size="sm"
+          color="danger"
+          outline
+        >
+          Reset
+        </Button>
+      </FormGroup>
     </Form>
   );
 };

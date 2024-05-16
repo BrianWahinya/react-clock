@@ -13,7 +13,7 @@ import { Icon } from "../../../components";
 //   )}, ${insertBgOpacity(color, "high")})`,
 // };
 
-const SelectedDate = ({ id, type, date, desc, color }) => {
+const SelectedDate = ({ id, type, date, name, color }) => {
   const { removeCalendarDate } = useMainContext();
   return (
     <li
@@ -23,7 +23,7 @@ const SelectedDate = ({ id, type, date, desc, color }) => {
       }}
     >
       <span>
-        {date}: {type}: {desc}
+        {date}: {type}: {name}
       </span>
       <Button
         className="btn-delete"
