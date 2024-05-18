@@ -1,0 +1,36 @@
+.div-countdown .countdown-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(235, 235, 235, 0.515);
+  border-radius: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 80%;
+  padding: 2px 20px;
+  margin: auto;
+  gap: 10px;
+}
+.div-countdown .countdown-item p {
+  padding: 2px;
+  margin: 2px;
+}
+.div-countdown .countdown-item .p-date-name {
+  text-wrap: nowrap;
+}
+.div-countdown .countdown-item .p-countdown-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.div-countdown .countdown-item .p-countdown-time p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+}

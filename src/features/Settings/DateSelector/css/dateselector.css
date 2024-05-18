@@ -21,6 +21,10 @@
   border-radius: 5px;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.24, rgb(119, 119, 119)), color-stop(0.72, rgb(158, 158, 158)), color-stop(0.86, rgb(125, 125, 125)));
 }
+.list-selected-dates .list-group-item {
+  width: 90%;
+  margin: auto;
+}
 .list-selected-dates .btn-delete {
   background: none;
   border: none;
