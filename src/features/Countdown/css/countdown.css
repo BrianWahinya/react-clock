@@ -1,36 +1,111 @@
+.div-countdown {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+  margin: 8px auto;
+  width: 70%;
+  min-width: 340px;
+  max-height: 250px;
+}
+.div-countdown::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(249, 249, 249, 0.8196078431);
+  border-radius: 5px;
+}
+.div-countdown::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: rgba(247, 247, 247, 0.8274509804);
+}
+.div-countdown::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.24, rgba(119, 119, 119, 0.2)), color-stop(0.72, rgba(158, 158, 158, 0.2)), color-stop(0.86, rgba(125, 125, 125, 0.2)));
+}
 .div-countdown .countdown-item {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  background-color: rgba(235, 235, 235, 0.515);
-  border-radius: 5px;
-  width: -moz-fit-content;
-  width: fit-content;
-  max-width: 80%;
-  padding: 2px 20px;
-  margin: auto;
+  border-radius: 3px;
+  width: 98%;
+  max-width: 400px;
+  padding: 5px 10px;
   gap: 10px;
 }
-.div-countdown .countdown-item p {
-  padding: 2px;
-  margin: 2px;
-}
 .div-countdown .countdown-item .p-date-name {
-  text-wrap: nowrap;
-}
-.div-countdown .countdown-item .p-countdown-time {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-}
-.div-countdown .countdown-item .p-countdown-time p {
+  padding: 2px;
+  margin: 0;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: small;
+  gap: 1px;
+  font-size: smaller;
+  overflow: auto;
+}
+.div-countdown .countdown-item .p-date-name::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(249, 249, 249, 0.8196078431);
+  border-radius: 5px;
+}
+.div-countdown .countdown-item .p-date-name::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: rgba(247, 247, 247, 0.8274509804);
+}
+.div-countdown .countdown-item .p-date-name::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.24, rgba(119, 119, 119, 0.2)), color-stop(0.72, rgba(158, 158, 158, 0.2)), color-stop(0.86, rgba(125, 125, 125, 0.2)));
+}
+.div-countdown .countdown-item .p-date-name .span-date {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.div-countdown .countdown-item .p-date-name .span-name {
+  width: 100%;
+  flex-grow: 1;
+  text-align: center;
+  text-wrap: wrap;
+  overflow: auto;
+}
+.div-countdown .countdown-item .p-date-name .span-name::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(249, 249, 249, 0.8196078431);
+  border-radius: 5px;
+}
+.div-countdown .countdown-item .p-date-name .span-name::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: rgba(247, 247, 247, 0.8274509804);
+}
+.div-countdown .countdown-item .p-date-name .span-name::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.24, rgba(119, 119, 119, 0.2)), color-stop(0.72, rgba(158, 158, 158, 0.2)), color-stop(0.86, rgba(125, 125, 125, 0.2)));
+}
+.div-countdown .countdown-item .flip-clock {
+  margin: auto;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  --fcc-flip-duration: 0.5s; /* transition duration when flip card */
+  --fcc-spacing: 5px; /* space between unit times and separators */
+  --fcc-digit-block-width: 14px; /* width of digit card */
+  --fcc-digit-block-height: 18px; /* height of digit card, highly recommend in even number */
+  --fcc-digit-block-radius: 3px; /* border radius of digit card */
+  --fcc-digit-block-spacing: 1px; /* space between blocks in each unit of time */
+  --fcc-digit-font-size: 12px; /* font size of digit */
+  --fcc-digit-color: white; /* color of digit */
+  --fcc-label-font-size: 9px; /* font size of label */
+  --fcc-label-font-weight: bold; /* font size of digit */
+  --fcc-label-color: #424242e0; /* color of label */
+  --fcc-background: #6a6a6aa3; /* background of digit card */
+  --fcc-divider-color: #464646e0; /* color of divider */
+  --fcc-divider-height: 0px; /* height of divider */
+  --fcc-separator-size: 2px; /* size of colon */
+  --fcc-separator-color: #656565; /* color of colon */
 }

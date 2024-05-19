@@ -1,11 +1,14 @@
 import { useMainContext } from "../../context/MainContext";
+import { sortDates } from "../../helpers/util";
 import CountdownItem from "./CountdownItem";
 
 import "./css/countdown.css";
 
 const Countdown = () => {
   const { selectedDates } = useMainContext();
-  const targetDates = selectedDates.filter((date) => date.showCountdown);
+  const targetDates = sortDates(
+    selectedDates.filter((date) => date.showCountdown)
+  );
   // console.log({ targetDates });
   return (
     <div className="div-countdown">

@@ -49,6 +49,7 @@ const opacityLevels = {
   low: [0.8, "cc"],
   mid: [0.4, 66],
   high: [0.26, 44],
+  veryhigh: [0.06, 24],
 };
 const opacityHslRgb = (item, op) => {
   const sub_item = item.split(", ").slice(0, -1);
@@ -147,3 +148,18 @@ export const equalDates = (dateA, dateB) => {
 
 export const sortDates = (arr) =>
   arr.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+export const getDateDifference = (startDate, endDate) => {
+  // Calculate the difference in milliseconds
+  const differenceMs = startDate > endDate ? 0 : Math.abs(endDate - startDate);
+
+  // Convert milliseconds to days, hours, minutes, and seconds
+  const days = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (differenceMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor((differenceMs % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((differenceMs % (1000 * 60)) / 1000);
+
+  return { days, hours, minutes, seconds };
+};

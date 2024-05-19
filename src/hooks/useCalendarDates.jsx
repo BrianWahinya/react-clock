@@ -3,7 +3,7 @@ export const useCalendarDates = () => {
     {
       id: "1715845046000_Tqp_7007",
       date: "2025-01-01",
-      color: "#000000",
+      color: "#5e76d4",
       type: "important",
       repeat: "yearly",
       name: "New Year",
