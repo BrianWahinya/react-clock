@@ -29,6 +29,7 @@ const options = [
   { value: "roadtrip", label: "Roadtrip", icon: "roadtrip" },
   { value: "lovedate", label: "Date", icon: "lovedate" },
   { value: "love", label: "Love", icon: "love" },
+  { value: "kenya", label: "Kenya", icon: "kenya" },
 ];
 
 const customStyles = {
@@ -70,7 +71,6 @@ const DateSelectorForm = ({ addCalendarDate }) => {
 
   const onChange = (e) => {
     // e.preventDefault();
-    console.log(dateTypeRef.current);
     setError(false);
   };
 
@@ -162,8 +162,9 @@ const DateSelectorForm = ({ addCalendarDate }) => {
               type="select"
               innerRef={dateRepeatRef}
             >
-              <option value="yearly">Yearly</option>
+              <option value="none">None</option>
               <option value="monthly">Monthly</option>
+              <option value="yearly">Yearly</option>
             </Input>
           </FormGroup>
         </Col>

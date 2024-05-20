@@ -22,6 +22,8 @@ import {
 import { GiNinjaStar, GiSelfLove } from "react-icons/gi";
 import { SiGotomeeting } from "react-icons/si";
 import { TbBeachOff } from "react-icons/tb";
+import { FaRegHandPeace } from "react-icons/fa6";
+import { GiKenya } from "react-icons/gi";
 
 const iconsObj = {
   light: <MdLightMode className="light" />,
@@ -41,6 +43,8 @@ const iconsObj = {
   vacation: <TbBeachOff />,
   meeting: <SiGotomeeting />,
   lovedate: <FaPizzaSlice />,
+  peace: <FaRegHandPeace />,
+  kenya: <GiKenya />,
 };
 
 const Icon = ({ type }) => {

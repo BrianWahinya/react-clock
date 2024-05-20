@@ -74,7 +74,7 @@ export const insertBgOpacity = (color, level) => {
 };
 
 /**********************************/
-/************** TIME **************/
+/*********** DATE - TIME **********/
 /**********************************/
 export const format = (time) => {
   let { hours, minutes, seconds } = time;
