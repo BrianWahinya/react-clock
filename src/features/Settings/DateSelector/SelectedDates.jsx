@@ -23,7 +23,8 @@ const SelectedDate = ({ id, type, date, name, color }) => {
       }}
     >
       <span>
-        {date}: {type}: {name}
+        <Icon type={type} />
+        &nbsp;&nbsp;{date}:&nbsp;&nbsp;{name}
       </span>
       <Button
         className="btn-delete"

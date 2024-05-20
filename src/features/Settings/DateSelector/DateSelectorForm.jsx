@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Select, { components } from "react-select";
 import {
   Button,
   Col,
@@ -9,19 +10,67 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import makeAnimated from "react-select/animated";
 import { genRandomId } from "../../../helpers/util";
+import { Icon } from "../../../components";
+
+const customOption = ({ data, ...props }) => (
+  <components.Option {...props}>
+    <Icon type={data.icon} />
+    &nbsp;&nbsp;{data.label}
+  </components.Option>
+);
+
+const options = [
+  { value: "important", label: "Important", icon: "important" },
+  { value: "meeting", label: "Meeting", icon: "meeting" },
+  { value: "birthday", label: "Birthday", icon: "birthday" },
+  { value: "vacation", label: "Vacation", icon: "vacation" },
+  { value: "roadtrip", label: "Roadtrip", icon: "roadtrip" },
+  { value: "lovedate", label: "Date", icon: "lovedate" },
+  { value: "love", label: "Love", icon: "love" },
+];
+
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    display: "flex",
+    alignItems: "center",
+    padding: "5px 10px",
+    color: state.isSelected ? "white" : "black",
+    backgroundColor: state.isSelected ? "#007bff" : "white",
+  }),
+  control: (provided) => ({
+    ...provided,
+    width: "100%",
+    borderRadius: 5,
+    border: "1px solid #ced4da",
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    display: "flex",
+    alignItems: "center",
+  }),
+};
+
+const animatedComponents = makeAnimated();
 
 const DateSelectorForm = ({ addCalendarDate }) => {
   const [error, setError] = useState(false);
   const formDateRef = useRef(null);
   const dateColorRef = useRef(null);
-  const dateTypeRef = useRef(null);
+  const dateTypeRef = useRef(options[1].value);
   const dateRepeatRef = useRef(null);
   const dateNameRef = useRef(null);
   const dateShowCountdownRef = useRef(null);
 
+  const changeType = (e) => {
+    dateTypeRef.current = e.value;
+  };
+
   const onChange = (e) => {
     // e.preventDefault();
+    console.log(dateTypeRef.current);
     setError(false);
   };
 
@@ -36,7 +85,7 @@ const DateSelectorForm = ({ addCalendarDate }) => {
       id: genRandomId(),
       date: formDate,
       color: dateColorRef.current.value.trim(),
-      type: dateTypeRef.current.value.trim(),
+      type: dateTypeRef.current.trim(),
       repeat: dateRepeatRef.current.value.trim(),
       name: dateNameRef.current.value.trim(),
       showCountdown: dateShowCountdownRef.current.checked,
@@ -94,16 +143,14 @@ const DateSelectorForm = ({ addCalendarDate }) => {
         <Col md={4}>
           <FormGroup>
             <Label for="dateType">Type</Label>
-            <Input
-              id="dateType"
-              name="dateType"
-              type="select"
-              innerRef={dateTypeRef}
-            >
-              <option value="important">Important</option>
-              <option value="dob">Birthday</option>
-              <option value="other">Other</option>
-            </Input>
+            <Select
+              options={options}
+              defaultValue={options[1]}
+              styles={customStyles}
+              isSearchable={false}
+              components={{ ...animatedComponents, Option: customOption }}
+              onChange={changeType}
+            />
           </FormGroup>
         </Col>
         <Col md={4}>

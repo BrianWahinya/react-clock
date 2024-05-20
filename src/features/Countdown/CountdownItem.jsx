@@ -10,7 +10,7 @@ const CountdownItem = ({ fields }) => {
       style={{ backgroundColor: insertBgOpacity(color, "veryhigh") }}
     >
       <p className="p-date-name">
-        <span className="span-date">{itemDate}:&nbsp;</span>
+        <span className="span-date">{itemDate}</span>
         <span className="span-name">{name}</span>
       </p>
 
