@@ -8,6 +8,7 @@ import {
 import { Calendar as ReactCalendar } from "react-calendar";
 import { useDate } from "../../hooks";
 import { equalDates, insertBgOpacity } from "../../helpers/util";
+import { UncontrolledTooltip } from "reactstrap";
 
 import "./css/calendar.css";
 import { useMainContext } from "../../context/MainContext";
@@ -67,30 +68,13 @@ const configureTileColor = (selectedDates) => {
   }
 };
 
-// Function to determine if a date belongs to the current month
-const isSameMonth = (date, month) => date.getMonth() === month;
-
-// Function to determine if a date belongs to the neighboring months
-const isAdjacentMonth = (date, month) => date.getMonth() !== month;
-
 const Calendar = () => {
   const [calendarClicked, setCalendarClicked] = useState(false);
   const { selectedDates } = useMainContext();
   const date = useDate();
 
   const tileClassName = useCallback(
-    ({ date: calendarDate, view }) => {
-      const classMain = comparison(date, calendarDate, selectedDates);
-      console.log(calendarDate, view);
-      // const isCurrentMonth = isSameMonth(calendarDate, view.getMonth());
-      // const isPrevMonth = isAdjacentMonth(calendarDate, view.getMonth() - 1);
-      // const isNextMonth = isAdjacentMonth(calendarDate, view.getMonth() + 1);
-
-      // if (isPrevMonth || isNextMonth) {
-      //   return `other-month ${classMain}`;
-      // }
-      return classMain;
-    },
+    ({ date: calendarDate }) => comparison(date, calendarDate, selectedDates),
     [date, selectedDates]
   );
 
@@ -103,15 +87,32 @@ const Calendar = () => {
     const filterSelectedDates = selectedDates.filter((item) =>
       equalDates(date, new Date(item.date.replace(/-/g, "/")))
     );
-    const dateIcons = filterSelectedDates.map((item) => (
-      <Icon key={item.id} type={item.type} />
+    const dateInfo = filterSelectedDates.map((item, idx) => (
+      <p key={`p${item.id}${idx}`}>{item.name}</p>
+    ));
+    const dateIcons = filterSelectedDates.map((item, idx) => (
+      <Icon key={`p${item.id}${idx}`} type={item.type} />
     ));
     // console.log(dateIcons);
     return dateIcons?.length > 0 ? (
-      <span className="span-date-icons">
-        <span className="date-num">{date.getDate()}</span>
-        <span className="date-icon">{dateIcons}</span>
-      </span>
+      <>
+        <span
+          id={`target_${new Date(date).getTime()}`}
+          className="span-date-icons"
+        >
+          <span className="date-num">{date.getDate()}</span>
+          <span className="date-icon">{dateIcons}</span>
+        </span>
+        <UncontrolledTooltip
+          className="date-custom-tooltip"
+          placement="top"
+          // isOpen={true}
+          autohide={false}
+          target={`target_${new Date(date).getTime()}`}
+        >
+          {dateInfo}
+        </UncontrolledTooltip>
+      </>
     ) : (
       date.getDate()
     );

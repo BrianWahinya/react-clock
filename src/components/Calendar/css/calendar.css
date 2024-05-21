@@ -1,3 +1,20 @@
+.date-custom-tooltip,
+.tooltip,
+.tooltip-inner {
+  background-color: rgba(110, 110, 110, 0.8274509804) !important;
+  border-radius: 5px;
+}
+.date-custom-tooltip p,
+.tooltip p,
+.tooltip-inner p {
+  padding: 2px;
+  margin: 1px;
+}
+
+.tooltip-arrow::before {
+  border-top-color: rgba(110, 110, 110, 0.8274509804) !important;
+}
+
 .custom-calendar {
   max-width: 500px;
 }
